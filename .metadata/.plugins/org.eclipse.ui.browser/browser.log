@@ -1,0 +1,15 @@
+
+2월 19, 2024 21:03:18.623 NEW SESSION
+2월 19, 2024 21:03:18.623 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 19, 2024 21:23:05.491 [11108:21696:0219/212305.491:ERROR:web_contents_delegate.cc(260)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+2월 19, 2024 21:23:05.496 [11108:21696:0219/212305.491:ERROR:web_contents_delegate.cc(260)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+2월 19, 2024 21:23:12.517 [11108:21696:0219/212312.516:ERROR:web_contents_delegate.cc(260)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+2월 19, 2024 21:23:12.517 [11108:21696:0219/212312.516:ERROR:web_contents_delegate.cc(260)] WebContentsDelegate::CheckMediaAccessPermission: Not supported.
+2월 19, 2024 21:40:42.198 [11108:19948:0219/214042.198:ERROR:cast_media_route_provider.cc(368)] sent sink updates
+2월 19, 2024 21:40:42.222 [11108:19948:0219/214042.221:ERROR:cast_media_route_provider.cc(368)] sent sink updates
+2월 19, 2024 22:48:54.17 [11108:19948:0219/224854.016:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
+2월 19, 2024 22:48:56.41 [11108:19948:0219/224856.041:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+2월 19, 2024 22:48:56.69 [11108:21696:0219/224856.068:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost
+2월 19, 2024 22:49:14.217 [11108:21696:0219/224914.217:ERROR:device_event_log_impl.cc(192)] [22:49:14.207] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+2월 19, 2024 22:49:33.128 [11108:19948:0219/224933.127:ERROR:cast_media_route_provider.cc(368)] sent sink updates
+2월 19, 2024 22:49:33.131 [11108:19948:0219/224933.130:ERROR:cast_media_route_provider.cc(368)] sent sink updates
