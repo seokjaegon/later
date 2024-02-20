@@ -1,35 +1,91 @@
 package com.icia.later;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.icia.later.dto.BoardDto;
+import com.icia.later.dto.MemberDto;
+import com.icia.later.service.BoardService;
+import com.icia.later.service.MemberService;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 @Controller
+@Slf4j
 public class HomeController {
+	@Autowired
+	private MemberService mServ;
+	@Autowired
+	private BoardService bServ;
+			
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+	@GetMapping("/")
+	public String home() {
+
 		return "home";
+	}
+	
+	//모집등록페이지 전환
+	@GetMapping("writeFrm")
+	public String writeFrm() {
+		log.info("writeFrm()");
+			
+		return "writeFrm";
+	}
+		
+	@GetMapping("mUpdate")
+	public String mUpdate() {
+		log.info("mUpdate");
+		
+		return("mUpdate");
+	}
+	
+	@GetMapping("loginPage")
+	public String loginPage() {
+		log.info("loginPage()");
+		
+		return "loginPage";
+	}
+	
+	// 회원가입페이지 이동
+	@GetMapping("mSignIn")
+	public String mSigIn() {
+		log.info("mSigIn()");
+		
+		return "mSignIn";
+	}
+	// 회원가입 처리 메서드
+	@PostMapping("mSignInProc")
+	public String mSignInProc(@RequestPart List<MultipartFile> files, 
+			MemberDto member,
+			HttpSession session,
+			RedirectAttributes rttr) {
+		log.info("mSignInProc()");
+				
+		String view = mServ.insertMember(files, member, session, rttr);
+		return view;
+		}
+	
+	@PostMapping("writeProc")
+	public String writeProc(@RequestPart List<MultipartFile> files, 
+							BoardDto board,
+							HttpSession session,
+							RedirectAttributes rttr) {
+		log.info("writeProc()");
+		
+		String view = bServ.insertBroad(files, board, session, rttr);
+		
+		return view;
 	}
 	
 }
