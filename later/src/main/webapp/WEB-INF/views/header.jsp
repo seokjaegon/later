@@ -25,6 +25,7 @@
 .review {
 	vertical-align: middle;
 	text-align: left;
+	padding-left: 5px;
 }
 
 .logo {
@@ -36,6 +37,7 @@
 
 .site{
 	text-align: center;
+	padding-left: 200px;
 }
 
 .link {
@@ -51,6 +53,7 @@
 .login-signin {
 	vertical-align: middle;
 	text-align: right;
+	padding-right: 5px;
 }
 </style>
 <div class="top-bar">

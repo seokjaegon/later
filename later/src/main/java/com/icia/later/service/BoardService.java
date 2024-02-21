@@ -2,7 +2,6 @@ package com.icia.later.service;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -46,7 +45,7 @@ public class BoardService {
 		return view;
 	}
 
-	private void FileUpload(List<MultipartFile> files, HttpSession session, BoardDto board) {
+	private void FileUpload(List<MultipartFile> files, HttpSession session, BoardDto board) throws Exception{
 		log.info("fileUpload()");
 		
 		String sysname = null;
@@ -67,8 +66,8 @@ public class BoardService {
 		
 		File file = new File(realPath + sysname);
 		
-		// mf.transferTo(file);
-		board.setBoardfile(sysname);
+		mf.transferTo(file);
+		board.setBoardFile(sysname);
 	}
 
 }

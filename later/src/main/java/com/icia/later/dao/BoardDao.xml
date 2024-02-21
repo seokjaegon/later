@@ -7,6 +7,6 @@
 		INSERT INTO board
 		VALUES (null, #{periodStart}, #{periodEnd}, #{personnel}, 
 				#{companyName}, #{detail}, #{checkInfo}, #{provideType},
-				#{price}, #{Boardfile})
+				#{price}, #{boardFile})
 	</insert>
 </mapper>
