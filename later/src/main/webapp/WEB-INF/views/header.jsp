@@ -23,6 +23,7 @@
 }
 
 .review {
+	flex:1;
 	vertical-align: middle;
 	text-align: left;
 	padding-left: 5px;
@@ -36,8 +37,8 @@
 }
 
 .site{
+	flex:1;
 	text-align: center;
-	padding-left: 200px;
 }
 
 .link {
@@ -51,6 +52,7 @@
 }
 
 .login-signin {
+	flex:1;
 	vertical-align: middle;
 	text-align: right;
 	padding-right: 5px;
@@ -61,14 +63,12 @@
  		<a href="/later"><img alt="로고" src="resources/images/리뷰엔.png" class="logo"></a>
 	</div>
 	<div class="site">
-		<h2>리뷰엔</h2> 
+		<h2>리뷰엔</h2>
 	</div>
 	<div class="login-signin">
 	<i class="fa fa-user-circle-o" aria-hidden="true"></i> <a
 	class="link" href="loginPage">로그인</a> <a class="link"
 	href="mSignIn">회원가입</a>
-	<a class="link" href="writeFrm">모집글 등록</a>
+	<!-- <a class="link" href="writeFrm">모집글 등록</a> --> 
 	</div>
 </div>
-
-
