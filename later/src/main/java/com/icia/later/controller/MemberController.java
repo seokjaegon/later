@@ -24,67 +24,67 @@ public class MemberController {
 	@Autowired
 	private MemberService mServ;
 	
-	// 일반회원 가입페이지 이동
-	@GetMapping("mSignIn")
-	public String mSignIn() {
-		log.info("mSignIn()");
+	// 회원가입페이지 이동
+		@GetMapping("mSignIn")
+		public String mSigIn() {
+			log.info("mSigIn()");
 			
-		return "mSignIn";
-	}
-	
-	// 회원가입 처리 메서드
-	@PostMapping("mSignInProc")
-	public String mSignInProc(@RequestPart List<MultipartFile> files, 
-			MemberDto member,
-			HttpSession session,
-			RedirectAttributes rttr) {
-		log.info("mSignInProc()");
-				
-		String view = mServ.insertMember(files, member, session, rttr);
-		
-		return view;
+			return "mSignIn";
 		}
 	
 	// 회원정보 수정페이지 이동
-	@GetMapping("mUpdate")
-	public String mUpdate(Model model,HttpSession session) {
-		log.info("mUpdate()");
-		
-		MemberDto logInInfo = (MemberDto) session.getAttribute("login");
-		
-		if (logInInfo != null && session.getAttribute("login") != null) {
-	        // 로그인한 회원 정보를 모델에 추가하여 JSP로 전달
-	        model.addAttribute("logInInfo", logInInfo);
-	        	        	        	        
+			@GetMapping("mUpdate")
+			public String mUpdate(Model model,HttpSession session) {
+				log.info("mUpdate()");
+				
+				MemberDto logInInfo = (MemberDto) session.getAttribute("login");
+				
+				if (logInInfo != null && session.getAttribute("login") != null) {
+			        // 로그인한 회원 정보를 모델에 추가하여 JSP로 전달
+			        model.addAttribute("logInInfo", logInInfo);
+			        	        	        	        
+			}
+				return "mUpdate";
 		}
-		return "mUpdate";
-	}
-	
-	// 회원정보 수정 처리
-	@PostMapping("mUpdateProc")
-	public String mUpdateProc(@RequestPart List<MultipartFile> files, 
-			MemberDto member,
-			HttpSession session,
-			RedirectAttributes rttr) {
-		log.info("updateProc()");
-		System.out.println("mUpdate에서 넘어온 dto"+member);
-		String view = mServ.memberUpdate(files, member, session, rttr);
-		
-		return view;
-	}
-	
-	// 회원정보 탈퇴
-	@GetMapping("mDelete")
-	public String mDelete(Integer memberId,HttpSession session,RedirectAttributes rttr) {
-		log.info("mDelete()");
 		
 		
-		String view = mServ.mDelete(memberId,session,rttr);
-		if (session != null && session.getAttribute("login") != null) {
-	        // 탈퇴 후 세션에 저장되어있는 값 삭제
-	        session.invalidate();
-	    }
+		// 회원가입 처리 메서드
+		@PostMapping("mSignInProc")
+		public String mSignInProc(@RequestPart List<MultipartFile> files, 
+				MemberDto member,
+				HttpSession session,
+				RedirectAttributes rttr) {
+			log.info("mSignInProc()");
+					
+			String view = mServ.insertMember(files, member, session, rttr);
+			return view;
+			}
+		
+		// 회원정보 수정 처리
+				@PostMapping("mUpdateProc")
+				public String mUpdateProc(@RequestPart List<MultipartFile> files, 
+						MemberDto member,
+						HttpSession session,
+						RedirectAttributes rttr) {
+					log.info("updateProc()");
+					System.out.println("mUpdate에서 넘어온 dto"+member);
+					String view = mServ.memberUpdate(files, member, session, rttr);
+					
+					return view;
+				}
+				@GetMapping("mDelete")
+				public String mDelete(Integer memberId,HttpSession session,RedirectAttributes rttr) {
+					log.info("mDelete()");
+					
+					
+					String view = mServ.mDelete(memberId,session,rttr);
+					if (session != null && session.getAttribute("login") != null) {
+				        // 탈퇴 후 세션에 저장되어있는 값 삭제
+				        session.invalidate();
+				    }
 
-		return view;
-	}
+					return view;
+				}
+				
+		
 }

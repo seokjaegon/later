@@ -54,7 +54,7 @@ public class MemberService {
 
 		String realPath = session.getServletContext().getRealPath("/");
 		log.info(realPath);
-		realPath += "resources/upload/";
+		realPath += "/resources/upload/";
 		File folder = new File(realPath);
 //isDirectory() : 해당 이름이 폴더가 아니거나 존재하지않으면 false
 		if (folder.isDirectory() == false) {
@@ -70,6 +70,33 @@ public class MemberService {
 
 		mf.transferTo(file); // 하드디스크(경로상의 폴더)에 저장
 		member.setMemberProfile(sysname);
+	}
+
+	public String login(MemberDto member, HttpSession session, RedirectAttributes rttr) {
+		log.info("login2()");
+		String msg = null;
+		String view = null;
+		MemberDto loggedInMember = mDao.login(member);
+		System.out.println(loggedInMember);
+		
+		if (loggedInMember != null) {
+			msg = "로그인 성공";
+			view = "redirect:/";
+
+			System.out.println(loggedInMember);
+			// 로그인시 세션에 저장
+			session.setAttribute("mLogin", loggedInMember);
+			System.out.println(loggedInMember);
+
+		} else {
+			msg = "이메일 및 비밀번호를 다시 확인해주세요.";
+			view = "redirect:mLogin";
+		}
+
+		rttr.addFlashAttribute("msg", msg);
+		System.out.println(msg);
+
+		return view;
 	}
 
 	public String memberUpdate(List<MultipartFile> files, MemberDto member, HttpSession session,
@@ -105,10 +132,8 @@ public class MemberService {
 	}
 
 	private void FileDelete(String poster, HttpSession session) {
-		log.info("fileDelete()");
-
 		String realPath = session.getServletContext().getRealPath("/");
-		realPath += "resouces/upload/" + poster;
+		realPath += "resources/upload/" + poster;
 		File file = new File(realPath);
 		if (file.exists()) {
 			file.delete();
@@ -117,10 +142,9 @@ public class MemberService {
 	}
 
 	public String mDelete(Integer memberId, HttpSession session, RedirectAttributes rttr) {
-		log.info("mDelete()");
 		String msg = null;
 		String view = null;
-		MemberDto loginInfo = (MemberDto) session.getAttribute("login");
+		MemberDto loginInfo = (MemberDto) session.getAttribute("mLogin");
 		int id = loginInfo.getMemberId();
 
 		try {
@@ -140,33 +164,6 @@ public class MemberService {
 		}
 
 		rttr.addFlashAttribute("msg", msg);
-		return view;
-	}
-
-	public String login(MemberDto member, HttpSession session, RedirectAttributes rttr) {
-		log.info("login2()");
-		String msg = null;
-		String view = null;
-		MemberDto loggedInMember = mDao.login(member);
-		System.out.println(loggedInMember);
-		
-		if (loggedInMember != null) {
-			msg = "로그인 성공";
-			view = "redirect:/";
-
-			System.out.println(loggedInMember);
-			// 로그인시 세션에 저장
-			session.setAttribute("login", loggedInMember);
-			System.out.println(loggedInMember);
-
-		} else {
-			msg = "이메일 및 비밀번호를 다시 확인해주세요.";
-			view = "redirect:login";
-		}
-
-		rttr.addFlashAttribute("msg", msg);
-		System.out.println(msg);
-
 		return view;
 	}
 

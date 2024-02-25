@@ -7,6 +7,26 @@
 		INSERT INTO board
 		VALUES (null, #{periodStart}, #{periodEnd}, #{personnel}, 
 				#{companyName}, #{detail}, #{checkInfo}, #{provideType},
-				#{price}, #{boardFile})
+				#{price}, #{boardFile}, #{category}, #{cId})
 	</insert>
+	
+	<update id="updateBoard" parameterType="board">
+		UPDATE board 
+		SET periodStart=#{periodStart}, periodEnd=#{periodEnd}, 
+		personnel=#{personnel}, companyName=#{companyName},
+		detail=#{detail}, checkInfo=#{checkInfo}, 
+		provideType=#{provideType}, price=#{price}, 
+		boardFile=#{boardFile}
+		
+		WHERE boardId = #{boardId}
+	</update>
+	
+	<select id="selectBoard" parameterType="Integer"
+			resultType="board">
+			SELECT * FROM board WHERE boardId = #{boardId}
+	</select>
+	
+	<select id="getBoardList" resultType="board">
+		SELECT * FROM board
+	</select>
 </mapper>

@@ -4,11 +4,9 @@ import org.apache.ibatis.type.Alias;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Alias("board")
 public class BoardDto {
 	private int boardId;
@@ -21,4 +19,7 @@ public class BoardDto {
 	private String provideType;
 	private int price;
 	private String boardFile;
+	private int category;
+	private int cId;
 }
+

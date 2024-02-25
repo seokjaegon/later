@@ -7,15 +7,15 @@ html {
 body {
 	margin: 0;
 	height: 100%;
-	background-color: #DFDFE1;
+	background-color: white;
 }
 a {
 	text-decoration: none;
 	color: black;
 }
-a:visited {
+/*a:visited {
 	color: black;
-}
+}*/
 .wrap {
 	display: flex;
 	flex-direction: column;
@@ -24,48 +24,64 @@ a:visited {
 /*
 * top-bar, footer-bar style
 */
-.top-bar {
+.top-bar { /* 헤더 바 */
 	background-color: #006BB9;
 	color: #fff;
+	line-height: 50px;
 	display: flex;
-  	justify-content: space-between;
-  	align-items: center;
+	justify-content: space-between;
+	align-items: center; /* 요소를 수직 가운데 정렬 */
 }
 
-.review {
-	flex:1;
+.review { /* 로고위치 조정 */
+	flex: 1;
 	vertical-align: middle;
 	text-align: left;
 	padding-left: 5px;
 }
 
-.logo {
+.logo { /* 로고 스타일 */
 	margin: 4px;
 	width: 50px;
 	height: 50px;
 	border-radius: 10px;
 }
 
-.site{
-	flex:1;
+.site { /* 사이트 이름 위치 조정 */
+	flex: 1;
 	text-align: center;
 }
 
-.link {
+.link { /* 링크 스타일 */
 	font-size: 15px;
 	color: white;
 }
 
-.login-signin a {
+.login-signin a { /* 로그인, 회원가입*/
 	margin-left: 10px;
 	text-decoration: none;
 }
 
-.login-signin {
-	flex:1;
+.login-signin { /* 로그인, 회원가입*/
+	flex: 1;
 	vertical-align: middle;
 	text-align: right;
 	padding-right: 5px;
+}
+.footer-bar {
+	background-color: #006BB9; 
+	color: #fff;
+	height: 60px;
+	line-height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer-logo {
+	width: 30px;
+	border-radius: 5px;
+	margin-right: 5px;
 }
 /**************************************/
 .content {
@@ -78,8 +94,6 @@ a:visited {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	font-size: 2em;
-	text-align: center;
-	font-size: 1.8em;
 }
 /*
  * list style
@@ -151,38 +165,6 @@ a:visited {
 	margin-bottom: 50px;
 	text-align: center;
 }
-.button-container {
-	margin-top : 100px;
-  text-align: center;
-}
-.button-container .small-button {
-	margin-top : 100px;
-}
-
-.large-button, .small-button {
-	outline: none; /* 윤곽선 제거 */
-}
-.large-button {
-  padding: 50px 250px;
-  font-size: 30px;
-  background-color: #006BB9;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.small-button {
-  padding: 10px 20px;
-  font-size: 14px;
-  background-color: black;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  margin: 10px;
-  cursor: pointer;
-}
 .btn-area {
 	width: 300px;
 	margin: 0px auto;
@@ -223,7 +205,7 @@ font.pno {
 	line-height: 1.5;
 	border-radius: 6px;
 	color: #fff;
-	background-color: #1877F2;
+	background-color: #0B3736;
 }
 .write-input {
 	position: relative;
@@ -247,17 +229,17 @@ font.pno {
 	resize: none;
 }
 .btn-write {
-	width: 100px;
+	width: 50px;
 	padding: 10px 16px;
 	font-size: 16px;
 	line-height: 1.5;
 	border-radius: 6px;
 	color: #fff;
-	background-color: #1877F2;
+	background-color: #0B3736;
 	margin-top: 10px;
 }
-.btn-write[type="button"] {
-	background-color: black;
+.btn-write[type="reset"], .btn-write[type="button"] {
+	background-color: #22adab;
 }
 .filebox input[type="file"] {
 	position: absolute;
@@ -270,9 +252,9 @@ font.pno {
 .filebox label {
 	display: inline-block;
 	padding: 10px 20px;
-	color: #ffffff;
+	color: #999;
 	vertical-align: middle;
-	background-color: #006BB9;
+	background-color: #fdfdfd;
 	cursor: pointer;
 	border: 1px solid #ebebeb;
 	border-radius: 5px;
@@ -347,6 +329,10 @@ font.pno {
 	.list-title>button {
 		width: 50%;
 	}
+	.form-header {
+		text-align: center;
+		font-size: 1.8em;
+	}
 	.movie-item {
 		width: 100%;
 		flex-direction: column;
@@ -366,8 +352,6 @@ font.pno {
 	}
 	.info-pre>div {
 		margin-bottom: 5px;
-	}
-		width: 100%;
 	}
 	.btn-area {
 		width: 100%;
