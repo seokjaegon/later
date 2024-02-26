@@ -4,18 +4,21 @@
   
 <mapper namespace="com.icia.later.dao.BoardDao">
 	<insert id="insertBoard" parameterType="board">
-		INSERT INTO board
-		VALUES (null, #{periodStart}, #{periodEnd}, #{personnel}, 
-				#{companyName}, #{detail}, #{checkInfo}, #{provideType},
-				#{price}, #{boardFile}, #{category}, #{cId})
+		INSERT INTO board ( category, companyName, periodStart, 
+							periodEnd, personnel, price, 
+							provideType, detail, checkInfo, 
+							boardFile, customerId)
+		VALUES (#{category}, #{companyName}, #{periodStart}, 
+				#{periodEnd}, #{personnel}, #{price}, 
+				#{provideType}, #{detail}, #{checkInfo},
+				#{boardFile},  #{customerId})
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
-		UPDATE board 
+		UPDATE board
 		SET periodStart=#{periodStart}, periodEnd=#{periodEnd}, 
-		personnel=#{personnel}, companyName=#{companyName},
-		detail=#{detail}, checkInfo=#{checkInfo}, 
-		provideType=#{provideType}, price=#{price}, 
+		personnel=#{personnel}, detail=#{detail}, 
+		checkInfo=#{checkInfo}, price=#{price},
 		boardFile=#{boardFile}
 		
 		WHERE boardId = #{boardId}
@@ -29,4 +32,8 @@
 	<select id="getBoardList" resultType="board">
 		SELECT * FROM board
 	</select>
+	
+	<delete id="deleteBoard" parameterType="Integer">
+		DELETE FROM board WHERE boardId = #{boardId}
+	</delete>
 </mapper>

@@ -27,12 +27,17 @@ public class BoardController {
 	
 	//모집등록페이지 전환
 		@GetMapping("writeFrm")
-		public String writeFrm(Model model) {
+		public String writeFrm(Model model, HttpSession session) {
 			log.info("writeFrm()");
 			
-//			CustomerDto cLogInInfo = (CustomerDto) session.getAttribute("cLogin");
-//			System.out.println(cLogInInfo);
-//			model.addAttribute("customer", cLogInInfo);
+			CustomerDto cLogInInfo = (CustomerDto) session.getAttribute("cLogin");
+			
+			System.out.println(cLogInInfo);
+			if(cLogInInfo != null) {
+				model.addAttribute("customer", cLogInInfo);
+				
+			}
+			
 			return "writeFrm";
 		}
 		
@@ -50,15 +55,17 @@ public class BoardController {
 		
 		//업체정보 수정페이지 전환
 		@GetMapping("bUpdate")
-		public String bUpdate(Integer boardId, Model model) {
+		public String bUpdate(Integer boardId, Model model, HttpSession session) {
 			log.info("bUpdate()");
 			
 			bServ.getBoard(boardId, model);
 			
-			//CustomerDto cLogInInfo = (CustomerDto) session.getAttribute("cLogin");
-			//System.out.println(cLogInInfo);
-			
-			//model.addAttribute("customer", cLogInInfo);
+//			CustomerDto cLogInInfo = (CustomerDto) session.getAttribute("cLogin");
+//			
+//			System.out.println(cLogInInfo);
+//			if(cLogInInfo != null) {
+//				model.addAttribute("customer", cLogInInfo);
+//			}
 			
 			return "bUpdate";
 		}
@@ -72,6 +79,16 @@ public class BoardController {
 			log.info("bUpdateProc()");
 			String view = bServ.boardUpdate(files, board, session, rttr);
 			
+			return view;
+		}
+		
+		// 업체 삭제 메서드
+		@GetMapping("bDelete")
+		public String bDelete(Integer boardId,
+							  HttpSession session,
+							  RedirectAttributes rttr) {
+			log.info("bDelete()");
+			String view = bServ.boardDelete(boardId, session, rttr);
 			return view;
 		}
 }

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.review {
+	 display: flex;
+    flex-wrap: wrap; /* 필요할 때 줄 바꿈 */
+}
+
+.review-poster {
+	height: 210px;
+	margin: 31px;
+}

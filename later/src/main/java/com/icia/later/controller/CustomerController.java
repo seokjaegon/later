@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.icia.later.dto.CustomerDto;
 import com.icia.later.service.CustomerService;
 
@@ -21,9 +22,10 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class CustomerController {
-		@Autowired CustomerService cServ;
+	@Autowired 
+	private CustomerService cServ;
 	
-		
+	
 	@GetMapping("cSignIn")
 	public String cSignIn() {
 		log.info("cSignIn()");
@@ -90,5 +92,5 @@ public class CustomerController {
 			
 			return view;
 		}
-		
+	
 }

@@ -3,54 +3,27 @@ package com.icia.later.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.icia.later.dto.MemberDto;
-import com.icia.later.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
 public class LogController {
-	@Autowired
-	private MemberService mServ;
 	
-	// 로그인 선택 페이지 이동
-	@GetMapping("loginSelect") 
-		public String loginSelect(){
+	@GetMapping("loginSelect")
+	public String loginSelect() {
 		log.info("loginSelect()");
 		
 		return "loginSelect";
 	}
-	
-	// 로그인페이지 이동
-		@GetMapping("mLogin")
-		public String mLogin() {
-			log.info("mLogin()");
-			
-			return "mLogin";
-		}
 		
-		// 로그인 처리 메서드
-		@PostMapping("loginCheck")
-		public String loginCheck(MemberDto member,
-								HttpSession session,
-								RedirectAttributes rttr) {
-			log.info("loginCheck()");
-			System.out.println(member);
-			
-			String view = mServ.login(member, session, rttr);
-			return view;
-		}
-		
-		// 로그아웃 
+		// 일반회원 로그아웃 (2024-02-26) 
 		@GetMapping("mLogout")
-		public String logout(HttpServletRequest request, RedirectAttributes rttr) {
+		public String mLogout(HttpServletRequest request, RedirectAttributes rttr) {
 		    log.info("mLogout()");
 		    String msg = null;
 
@@ -73,7 +46,7 @@ public class LogController {
 		    return "redirect:/";
 		}
 		
-		// 로그아웃 
+		// 사업자 로그아웃 (2024-02-26) 
 				@GetMapping("cLogout")
 				public String cLogout(HttpServletRequest request, RedirectAttributes rttr) {
 				    log.info("cLogout()");

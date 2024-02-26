@@ -1,7 +1,6 @@
 package com.icia.later.dao;
 
 import com.icia.later.dto.CustomerDto;
-import com.icia.later.dto.MemberDto;
 
 public interface CustomerDao {
 	

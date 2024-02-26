@@ -9,17 +9,17 @@ import lombok.Setter;
 @Setter
 @Alias("board")
 public class BoardDto {
-	private int boardId;
+	private Integer boardId;
+	private String category;
+	private String companyName;
 	private String periodStart;
 	private String periodEnd;
 	private int personnel;
-	private String companyName;
+	private int price;
+	private String provideType;
 	private String detail;
 	private String checkInfo;
-	private String provideType;
-	private int price;
 	private String boardFile;
-	private int category;
-	private int cId;
+	private Integer customerId;
 }
 

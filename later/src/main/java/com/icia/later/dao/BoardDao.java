@@ -4,7 +4,6 @@ package com.icia.later.dao;
 import java.util.List;
 
 import com.icia.later.dto.BoardDto;
-import com.icia.later.dto.CustomerDto;
 
 public interface BoardDao {
 	
@@ -15,5 +14,7 @@ public interface BoardDao {
 	BoardDto selectBoard(Integer boardId);
 
 	List<BoardDto> getBoardList();
+
+	void deleteBoard(Integer boardId);
 	
 }

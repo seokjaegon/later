@@ -144,7 +144,7 @@ public class MemberService {
 	public String mDelete(Integer memberId, HttpSession session, RedirectAttributes rttr) {
 		String msg = null;
 		String view = null;
-		MemberDto loginInfo = (MemberDto) session.getAttribute("mLogin");
+		MemberDto loginInfo = (MemberDto) session.getAttribute("login");
 		int id = loginInfo.getMemberId();
 
 		try {

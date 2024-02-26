@@ -19,9 +19,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- 헤더바 -->
 <div class="top-bar"> 
-	<!-- 사이트 로고 -->
 	<div class="review">
 		<a href="/later"><img alt="로고" src="resources/images/logo.png" class="logo"></a>
 	</div >
@@ -29,7 +27,6 @@
 	<div class="site">
 		<a href="/later">리뷰엔</a>
 	</div>
-	<!-- 로그인, 회원가입 링크 -->
 	<div class="login-signin">
 		<i class="fa fa-user-circle-o" aria-hidden="true"></i>
 		<a class="link" href="loginSelect">로그인</a> 

@@ -56,7 +56,7 @@
 			<option value="4">뷰티</option>
 			<option value="5">기타</option>
 			 </select>
-			<input type="hidden" class="write-input" name="cId"
+			<input type="hidden" class="write-input" name="customerId"
 				   value="${customer.customerId}">  
             <input type="text" class="write-input" name="companyName"
                    autofocus placeholder="가게명" required>
@@ -74,7 +74,7 @@
                    value="무료"placeholder="제공가격" required readonly="readonly">
             <textarea rows="10" class="write-input ta" name="detail"
                       placeholder="상세설명"></textarea>
-            <textarea rows="10" class="write-input ta" name="CheckInfo"
+            <textarea rows="10" class="write-input ta" name="checkInfo"
                       placeholder="체크사항 및 요청사항"></textarea>
             <div class="btn-area">
                 <input type="submit" class="btn-write" value="작성완료">
