@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 @Alias("member")
 public class MemberDto {
-	private Integer memberId;
+	private int memberId;
 	private String memberName;
 	private String memberEmail;
 	private String memberPass;

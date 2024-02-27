@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Alias("customer")
 public class CustomerDto {
-	private Integer customerId;
+	private int customerId;
 	private String customerName;
 	private String customerEmail;
 	private String customerPass;
@@ -18,5 +18,6 @@ public class CustomerDto {
 	private String companyAddress;
 	private String sectors;
 	private String customerProfile;
+	
 	
 }

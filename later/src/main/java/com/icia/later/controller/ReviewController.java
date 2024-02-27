@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.icia.later.dto.MemberDto;
 import com.icia.later.dto.ReviewDto;
 import com.icia.later.service.ReviewService;
 
@@ -38,9 +39,14 @@ public class ReviewController {
 	
 	//리뷰작성 페이지 이동
 	@GetMapping("reviewWrite")
-	public String reviewWrite() {
+	public String reviewWrite(Model model, HttpSession session) {
 		log.info("reviewWrite()");
 		
+		// 로그인한 일반 회원 정보(2024-02-27)
+		MemberDto mLogInInfo = (MemberDto) session.getAttribute("mLogin");
+		// 로그인한 회원 정보를 모델에 추가하여 JSP로 전달
+	    model.addAttribute("member", mLogInInfo);
+	    
 		return "reviewWrite";
 	}
 	

@@ -1,0 +1,27 @@
+.detail-all {
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 자동으로 요소의 크기를 조정하여 가로 정렬 */
+    gap: 10px; /* 요소 사이의 간격 */
+}
+
+.detail-poster {
+	height: 500px;
+	margin: 50px; 
+}
+
+.contents {
+	border-left: 2px solid #000000;
+	margin-bottom: 10px;
+}
+
+.detail-contents {
+	max-width: 660px; /* 최대 너비 설정 */
+    min-width: 100px; /* 최소 너비 설정 */
+    max-height: 660px; /* 최대 높이 설정 */
+    min-height: 100px; /* 최소 높이 설정 */
+    width: 660px; /* div의 너비 설정 */
+	word-wrap: break-word; /* 단어 단위로 줄바꿈 */
+	font-size: 20px;
+	font-family: inherit;
+}
+

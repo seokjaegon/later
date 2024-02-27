@@ -48,9 +48,11 @@
                 <input type="file" name="files" id="file">
                 <input type="text" class="upload-name" value="파일명" readonly>
             </div>
+            <input type="hidden" class="write-input ta" name="memberId" 
+            	value="${member.memberId}">
             <input type="date" class="write-input ta" name="time">
             <textarea rows="20" class="write-input ta" name="contents"
-                      placeholder="리뷰작성"></textarea>
+                      placeholder="리뷰와 사용하시는 sns의 링크를 적어주세요."></textarea>
             <div class="btn-area">
                 <input type="submit" class="btn-write" value="작성완료">
                 <input type="button" class="btn-write" value="뒤로가기" id="backbtn">

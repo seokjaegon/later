@@ -112,7 +112,7 @@
 					<div class="board-item">
 					<!-- 업체 이미지 (2024-02-26) -->
 					<div class="board-image">
-						<a href="detail?boardId=${bitem.boardId}">
+						<a href="companyDetail?boardId=${bitem.boardId}">
 							<c:if test="${empty bitem.boardFile}">
 								<img src="resources/images/no_image.jpg"
 									class="poster-pre">
@@ -125,14 +125,23 @@
 						</div>
 						<!-- 업체 이름 (2024-02-26) -->
 						<div class="board-name">
-							<a href="detail?boardId=${bitem.boardId}">
+							<a href="companyDetail?boardId=${bitem.boardId}">
 								${bitem.companyName}
 							</a>
 						</div>
+						<!-- 제공유형&가격 (2024-02-27) -->
+						<div class="provideType-price">
+						<!-- 제공유형 (2024-02-27) -->
+							<div class="board-provideType">
+								${bitem.provideType}
+							</div>
 						<!-- 등록된 가격 (2024-02-26) -->
-						<div class="board-item">${bitem.price}</div>
+							<div class="board-price">
+								${bitem.price}
+						    </div>							
+						</div>						
 						<!-- 모집 인원 (2024-02-26) -->
-						<div class="board-personnel">${bitem.personnel}</div>
+						<div class="board-personnel">모집인원  / ${bitem.personnel}</div>
 					</div>
 				</c:forEach>
 			</c:if> 

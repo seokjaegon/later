@@ -4,24 +4,23 @@
   
 <mapper namespace="com.icia.later.dao.BoardDao">
 	<insert id="insertBoard" parameterType="board">
-		INSERT INTO board ( category, companyName, periodStart, 
-							periodEnd, personnel, price, 
-							provideType, detail, checkInfo, 
-							boardFile, customerId)
-		VALUES (#{category}, #{companyName}, #{periodStart}, 
-				#{periodEnd}, #{personnel}, #{price}, 
-				#{provideType}, #{detail}, #{checkInfo},
-				#{boardFile},  #{customerId})
+		INSERT INTO board ( periodStart, periodEnd, personnel, 
+							companyName, detail, checkInfo,
+							provideType, price, boardFile, 
+							category, customerId)
+		VALUES (#{periodStart}, #{periodEnd}, #{personnel}, 
+				#{companyName}, #{detail}, #{checkInfo}, #{provideType},
+				#{price}, #{boardFile}, #{category}, #{customerId})
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
-		UPDATE board
-		SET periodStart=#{periodStart}, periodEnd=#{periodEnd}, 
-		personnel=#{personnel}, detail=#{detail}, 
-		checkInfo=#{checkInfo}, price=#{price},
-		boardFile=#{boardFile}
-		
-		WHERE boardId = #{boardId}
+		UPDATE board b
+		INNER JOIN customer c ON b.customerId = c.customerId
+		SET b.periodStart=#{periodStart}, b.periodEnd=#{periodEnd}, 
+		b.personnel=#{personnel}, b.detail=#{detail}, 
+		b.checkInfo=#{checkInfo}, b.price=#{price}, 
+		b.boardFile=#{boardFile}, b.category=#{category}, b.customerId=#{customerId}
+		WHERE b.boardId = #{boardId}
 	</update>
 	
 	<select id="selectBoard" parameterType="Integer"

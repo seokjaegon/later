@@ -61,13 +61,6 @@
 }
 
 </style>
-<script>
-            let m = "${msg}";
-            if(m != ""){
-                alert(m);
-            }
-            
-    </script>
 </head>
 <body>
 	<div class="wrap">
@@ -88,7 +81,7 @@
 				<li class="nav-item"><a class="nav-link" href="#">가전</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">뷰티</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">기타</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">리뷰</a></li>
+				<li class="nav-item"><a class="nav-link" href="review">리뷰</a></li>
 			</ul>
 		</nav>
 		<div>
@@ -117,9 +110,9 @@
 						</div>
 						<!-- 업체 이름 (2024-02-26) -->
 						<div class="review-contents">
-							<a href="reviewDetail?reviewId=${ritem.reviewId}">
+						<a href="reviewDetail?reviewId=${ritem.reviewId}">
 								${ritem.contents}
-							</a>
+						</a>
 						</div>
 					</div>
 				</c:forEach>
