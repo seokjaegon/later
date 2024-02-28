@@ -22,7 +22,8 @@
  	
  	<select id="selectReview" parameterType="Integer"
  		resultType="review">
- 		SELECT * FROM review
+ 		SELECT * 
+ 		FROM review
  		WHERE reviewId=#{reviewId}
  	</select>
  </mapper>

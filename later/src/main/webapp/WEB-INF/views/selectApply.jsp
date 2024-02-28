@@ -50,29 +50,9 @@
 </style>
 <body>
 <div class="wrap">
-		<c:if test="${empty mLogInInfo and empty cLogInInfo}">
-			<jsp:include page="header.jsp" />
-		</c:if>
-		<c:if test="${!empty mLogInInfo}">
-			<jsp:include page="mHeader.jsp" />
-		</c:if>
-		<c:if test="${!empty cLogInInfo}">
+
 			<jsp:include page="cHeader.jsp" />
-		</c:if>
-		<nav class="navbar navbar-expand-sm bg-light navbar-light">
-			<!-- Links -->
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="#">맛집</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">숙소</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">가전</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">뷰티</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">기타</a></li>
-				<li class="nav-item"><a class="nav-link" href="review">리뷰</a></li>
-			</ul>
-		</nav>
-		<div>
-			<hr color="orange">
-		</div>
+
 <div class="detail-all">
 	<div class="image">
 		<c:if test="${empty review.reviewFile}">

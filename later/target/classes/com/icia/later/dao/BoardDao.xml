@@ -14,13 +14,13 @@
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
-		UPDATE board b
-		INNER JOIN customer c ON b.customerId = c.customerId
-		SET b.periodStart=#{periodStart}, b.periodEnd=#{periodEnd}, 
-		b.personnel=#{personnel}, b.detail=#{detail}, 
-		b.checkInfo=#{checkInfo}, b.price=#{price}, 
-		b.boardFile=#{boardFile}, b.category=#{category}, b.customerId=#{customerId}
-		WHERE b.boardId = #{boardId}
+		UPDATE board
+		INNER JOIN customer ON board.customerId = customer.customerId
+		SET board.periodStart=#{periodStart}, board.periodEnd=#{periodEnd}, 
+		board.personnel=#{personnel}, board.detail=#{detail}, 
+		board.checkInfo=#{checkInfo}, board.price=#{price}, 
+		board.boardFile=#{boardFile}, board.category=#{category}, board.customerId=#{customerId}
+		WHERE board.boardId = #{boardId}
 	</update>
 	
 	<select id="selectBoard" parameterType="Integer"
@@ -35,4 +35,13 @@
 	<delete id="deleteBoard" parameterType="Integer">
 		DELETE FROM board WHERE boardId = #{boardId}
 	</delete>
+	
+	<!-- 내가 모집한 글 목록-->
+	<select id="getBoardListBycustomerId" parameterType="HashMap"
+		resultType="board">
+		select * from board
+		where customerId=#{pMap.customerId}
+		LIMIT #{pMap.pageNum},
+		#{pMap.listCnt}
+	</select>	
 </mapper>

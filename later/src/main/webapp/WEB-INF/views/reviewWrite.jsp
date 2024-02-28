@@ -48,7 +48,7 @@
                 <input type="file" name="files" id="file">
                 <input type="text" class="upload-name" value="파일명" readonly>
             </div>
-            <input type="hidden" class="write-input ta" name="memberId" 
+            <input type="hidden" class="write-input ta" name="memberId"
             	value="${member.memberId}">
             <input type="date" class="write-input ta" name="time">
             <textarea rows="20" class="write-input ta" name="contents"

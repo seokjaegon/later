@@ -22,6 +22,12 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+	let m = "${msg}";
+	if (m != "") {
+		alert(m);
+	}
+</script>
 </head>
 <body>
 	<div class="wrap">
@@ -59,7 +65,7 @@
 						<a href="mUpdate">회원정보수정</a>
 					</div>
 					<div>
-						<a href="#">내가 신청한 모집글</a>
+						<a href="applyCompany">내가 신청한 모집글</a>
 					</div>
 					<div>
 						<a href="reviewWrite">리뷰 작성</a>
@@ -93,7 +99,7 @@
 						<a href="mUpdate">회원정보수정</a>
 					</div>
 					<div>
-						<a href="#">내가 모집한글</a>
+						<a href="companyList?customerId=${cLogInInfo.customerId}">내가 모집한글</a>
 					</div>
 					<div>
 						<a href="writeFrm">업체 등록</a>

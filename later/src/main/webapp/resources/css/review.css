@@ -25,6 +25,7 @@
     white-space: nowrap; /* 줄바꿈 방지 */
     text-overflow: ellipsis; /* 생략 부호 (...) 추가 */
 	word-wrap: break-word; /* 단어 단위로 줄바꿈 */
+    overflow-wrap: break-word; /* 단어 단위로 줄바꿈 (word-wrap과 동일한 기능) */
 }
 
 .review-contents a {
