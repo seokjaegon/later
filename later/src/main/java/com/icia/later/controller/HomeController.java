@@ -28,6 +28,7 @@ public class HomeController {
 	public String home(Model model, HttpSession session) {
 		log.info("home()");
 		
+		// 등록한 업체리스트 가져오기
 		List<BoardDto> bList = bServ.getBoardList();
 		// 로그인한 일반 회원 정보(2024-02-26)
 		MemberDto mLogInInfo = (MemberDto) session.getAttribute("mLogin");
@@ -37,7 +38,7 @@ public class HomeController {
 	    model.addAttribute("mLogInInfo", mLogInInfo);
 	    // 로그인한 사업자 정보를 모델에 추가하여 JSP로 전달
 	    model.addAttribute("cLogInInfo", cLogInInfo);
-	    
+	    // 업체리스트를 모델에 추가하여 JSP로 전달
 	    model.addAttribute("bList", bList);
 		return "home";
 	}

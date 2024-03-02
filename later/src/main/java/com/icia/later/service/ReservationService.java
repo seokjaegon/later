@@ -25,6 +25,7 @@ public class ReservationService {
 	@Autowired
 	private ReservationDao rDao;
 	
+	// 예약 정보 입력
 	public String insertRev(Integer memberId, Integer boardId, RedirectAttributes rttr, HttpSession session) {
 		
 		log.info("insertRev()");
@@ -51,6 +52,7 @@ public class ReservationService {
 		return view;
 	}
 
+	// 
 	public ReservationDto selectRev(Integer memberId, Integer boardId, RedirectAttributes rttr, HttpSession session) {
 		Map<String, Integer> pMap = new HashMap<String, Integer>();
 		pMap.put("memberId", memberId);
@@ -110,6 +112,34 @@ String pageHtml = null;
 		List<ReservationDto> rList = rDao.getReservationList(boardId);
 		
 		return rList;
+	}
+	
+	// 신청한 회원의 상태 업데이트(확정 or 거절)
+	public String updateStatus(Integer reservationId, String status, Model model, RedirectAttributes rttr) {
+		log.info("updateStatus()");
+		String view = null;
+		String msg = null;
+		
+		if("확정".equals(status)) {
+			Map<String, Object> pMap = new HashMap<>();
+			pMap.put("reservationId", reservationId);
+			pMap.put("status", status);
+			
+			rDao.updateStatus(pMap);
+			view = "redirect:/";
+			msg = "신청한 회원을 확정하였습니다.";
+		} else {
+			Map<String, Object> pMap = new HashMap<>();
+			pMap.put("reservationId", reservationId);
+			pMap.put("status", status);
+			
+			rDao.updateStatus(pMap);
+			view = "redirect:/";
+			msg = "신청한 회원을 거절하였습니다.";
+		}
+
+		rttr.addFlashAttribute("msg", msg);
+		return view;
 	}
 	
 }

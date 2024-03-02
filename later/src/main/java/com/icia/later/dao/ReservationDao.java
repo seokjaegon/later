@@ -21,5 +21,7 @@ public interface ReservationDao {
 	int cntBoard();
 
 	List<ReservationDto> getReservationList(Integer boardId);
+	
+	void updateStatus(@Param("pMap") Map<String, Object> pMap);
 
 }

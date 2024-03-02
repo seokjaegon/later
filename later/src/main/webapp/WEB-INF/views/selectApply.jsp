@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="resources/css/style.css"/>
 <link rel="stylesheet"
-	href="resources/css/reviewDetail.css"/>
+	href="resources/css/selectApply.css"/>
 </head>
 <style>
 	.wrap {
@@ -50,47 +50,105 @@
 </style>
 <body>
 <div class="wrap">
-
+		<c:if test="${empty mLogInInfo and empty cLogInInfo}">
+			<jsp:include page="header.jsp" />
+		</c:if>
+		<c:if test="${!empty mLogInInfo}">
+			<jsp:include page="mHeader.jsp" />
+		</c:if>
+		<c:if test="${!empty cLogInInfo}">
 			<jsp:include page="cHeader.jsp" />
-
-<div class="detail-all">
-	<div class="image">
-		<c:if test="${empty review.reviewFile}">
-			<img src="resources/images/no_image.jpg"
-				class="detail-poster">
 		</c:if>
-		<c:if test="${!empty review.reviewFile}">
-			<img src="resources/upload/${review.reviewFile}"
-				class="detail-poster">
+		<form id="detailForm" method="post" action="select"
+      enctype="multipart/form-data">
+		<c:if test="${empty rList}">
+			<div class="shop-item">
+                 <span class="none-content">신청한 체험단이 없습니다.</span>
+            </div>
 		</c:if>
-	</div>
-	<div class="contents">
-		<!-- 게시글 상세 내용 출력(div) -->
-		<div class="detail">
-			<div class="detail-sub">
-				<div class="img-box">
-					<c:if test="${empty member.memberProfile}">
-						<img src="resources/images/no_image.jpg"
-							class="img-poster">
-					</c:if>
-					<c:if test="${!empty member.memberProfile}">
-						<img src="resources/upload/${member.memberProfile}"
-							class="img-poster">
-					</c:if>
-				</div>
-				<div class="detailcontent">${member.memberName}</div>
-				<div class="detailcontent">${review.time}</div>
-			</div>
-			<hr color="gray">
-			<div class="detail-sub">
-				<div class="detail-contents">${review.contents}</div>
-			</div>
-			
+		<c:if test="${!empty rList}">
+			<c:forEach var="reserv" items="${rList}">
+			<div class="right">
+				    <section class="info">
+					
+					
+					<input type="hidden" name="reservationId" value="${reserv.reservationId}">
 
-		</div>
-	</div>
-</div>
-		<jsp:include page="footer.jsp" />
+					<!-- <p class="name">
+						<strong>업체이름</strong><br>${board.companyName}</p>
+					 Hidden input fields to hold the data 
+					<input type="hidden" name="companyName"
+						value="${board.companyName}">  -->
+
+					<p>
+						<strong>신청시간</strong><br>${reserv.reservationTime}</p>
+					<input type="hidden" name="reservationTime" value="${reserv.reservationTime}">
+
+					<p>
+						<strong>신청 상태</strong><br>${reserv.status}</p>
+					<input type="hidden" name="status"
+						value="${reserv.status}">
+
+					<p>
+						<strong>모집마감일자</strong><br>${board.periodEnd}</p>
+					<input type="hidden" name="memberId" value="${reserv.memberId}">
+
+					<p>
+						<strong>제공타입</strong><br>${board.provideType}</p>
+					<input type="hidden" name="boardId"
+						value="${reserv.boardId}">
+
+					<p>
+						<!--  <strong>가격</strong><br>${board.price}</p>
+					<input type="hidden" name="price" value="${board.price}">
+                    -->
+				</section>
+
+				<!--  <section class="detail">
+					<p>
+						<strong><b>상세정보</b></strong> <span class="detailContent">
+							"${detail}"</span>
+					</p>
+					<ul>
+						<li></li>
+						
+					</ul>
+				</section> detailEnd
+			-->
+                
+                <div class="buttons">
+                <!-- 결제버튼-->
+				<button type="submit" id="btn-yes" class="btn-yes" >확정</button>
+				<!-- 결제버튼 완-->
+				<button type="submit" id="btn-no"class="btn-no" >거절</button>
+                </div> <!--buttonsEnd-->
+			             </div><!--rightEnd-->
+    </c:forEach>
+
+	</c:if>
+	</form>
+	<jsp:include page="footer.jsp" />
 	</div>
 </body>
+<script>
+$(document).ready(function() {
+  $("#btn-yes").click(function() {
+        // 확정 버튼을 눌렀을 때
+        $("input[name='status']").val("확정"); // status 값을 확정으로 변경
+        $("#detailForm").submit(); // 폼 서브밋
+    });
+
+    $("#btn-no").click(function() {
+        // 거절 버튼을 눌렀을 때
+        $("input[name='status']").val("거절"); // status 값을 거절으로 변경
+        $("#detailForm").submit(); // 폼 서브밋
+    });
+});
+</script>
+<script>
+	let m = "${msg}";
+	if (m != "") {
+		alert(m);
+	}
+</script>
 </html>

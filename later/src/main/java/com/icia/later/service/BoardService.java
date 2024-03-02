@@ -117,7 +117,8 @@ public class BoardService {
 		
 		return board;
 	}
-
+	
+	// 등록한 업체 리스트 가져오기
 	public List<BoardDto> getBoardList() {
 		
 		List<BoardDto> bList = bDao.getBoardList();
